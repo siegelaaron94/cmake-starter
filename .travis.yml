@@ -1,0 +1,7 @@
+dist: trusy
+sudo: false
+lauguage: cpp
+
+script:
+  - cmake .
+  - cmake --build . -- -j2
