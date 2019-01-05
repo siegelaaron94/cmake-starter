@@ -2,6 +2,13 @@ dist: xenial
 sudo: false
 lauguage: cpp
 
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-8
+
 script:
-  - cmake .
+  - CXX=/usr/bin/g++-8 CC=/usr/bin/g++-8 cmake .
   - cmake --build . -- -j2
