@@ -1,4 +1,4 @@
-dist: trusy
+dist: xenial
 sudo: false
 lauguage: cpp
 
