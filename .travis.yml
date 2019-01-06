@@ -1,4 +1,4 @@
-lauguage: cpp
+language: cpp
 sudo: false
 
 matrix:
