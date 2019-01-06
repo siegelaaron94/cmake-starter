@@ -11,22 +11,15 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-8
-            - qt5-default
       env:
         - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
-    - os: osx
-      osx_image: xcode10
-      addons:
-        homebrew:
-          packages:
-            - qt
-      env:
-        - MATRIX_EVAL="CC=clang && CXX=clang++"
-        - Qt5_DIR=/usr/local/Cellar/qt/5.11.1/lib/cmake/Qt5
 
-before_script:
-  - eval "${MATRIX_EVAL}"
+install:
+  - pip install conan
 
-script:
-  - cmake .
-  - cmake --build . --config Debug
+#before_script:
+#  - eval "${MATRIX_EVAL}"
+
+#script:
+#  - cmake .
+#  - cmake --build . --config Debug
