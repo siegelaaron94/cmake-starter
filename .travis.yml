@@ -14,6 +14,7 @@ matrix:
       env:
         - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
       cache:
+        timeout: 1000000000
         directories:
           - /home/travis/.conan
 
@@ -25,6 +26,6 @@ before_script:
   - conan profile update settings.compiler.libcxx=libstdc++11 default
   - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
   - mkdir build && cd build && conan install ..
-  
+
 script:
   - cd build && cmake .. && cmake --build . --config Debug
