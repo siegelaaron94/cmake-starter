@@ -16,6 +16,7 @@ matrix:
 
 install:
   - pip install --user conan
+  - conan profile new default --detect
 
 #before_script:
 #  - eval "${MATRIX_EVAL}"
