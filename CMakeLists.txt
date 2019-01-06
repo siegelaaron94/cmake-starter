@@ -16,5 +16,5 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(SOURCES
     src/main.cpp
 )
-add_executable(cmake-starter WIN32 ${SOURCES})
+add_executable(cmake-starter ${SOURCES})
 cotire(cmake-starter)
