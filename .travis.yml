@@ -8,11 +8,8 @@ os:
 compiler:
   - clang
 
-addons:
-  homebrew:
-    packages:
-      - cmake
-      - cmake-data
+osx_image: xcode10
+
 
 script:
   - cmake .
