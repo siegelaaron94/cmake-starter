@@ -1,11 +1,10 @@
 lauguage: cpp
 sudo: false
 
-osx_image: xcode10
-
 matrix:
   include:
     - os: linux
+      dist: xenial
       compiler: gcc-8
     - os: osx
       osx_image: xcode10
