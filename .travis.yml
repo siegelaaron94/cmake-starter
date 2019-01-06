@@ -7,7 +7,10 @@ matrix:
         - CMAKE_GENERATOR="Visual Studio 15 2017 Win64"
       before_install:
         - choco install python2
-        - which python2
+        - ls /c/ProgramData/chocolatey
+        - ls /c/ProgramData/chocolatey/bin
+        - which pip
+        - which pip2
         - pip install --user conan
         - conan profile new default --detect
     - os: linux
