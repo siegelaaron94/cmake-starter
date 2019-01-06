@@ -9,38 +9,31 @@ matrix:
         - CMAKE_GENERATOR="Visual Studio 15 2017 Win64"
     - os: linux
       dist: xenial
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-8
-      env:
-        - CMAKE_COMPILER="CC=gcc-8 && CXX=g++-8"
-        - CMAKE_GENERATOR="Unix Makefiles"
-      before_script:
-        - echo "Linux before_script"
-        - eval "${MATRIX_EVAL}"
+      before_install:
+        - echo "Linux before_install"
+        - add-apt-repository ppa:ubuntu-toolchain-r/test -y
+        - apt-get update -q
+        - apt-get install gcc-8 -y
+        - eval "${CMAKE_COMPILER}"
         - pip install --user conan
-        - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
         - conan profile new default --detect
         - conan profile update settings.compiler.version=8 default
         - conan profile update settings.compiler.libcxx=libstdc++11 default
+      env:
+        - CMAKE_COMPILER="CC=gcc-8 && CXX=g++-8"
+        - CMAKE_GENERATOR="Unix Makefiles"
     - os: osx
       osx_image: xcode10
-      env:
-        - CMAKE_COMPILER="CC=clang && CXX=clang++"
-        - CMAKE_GENERATOR="Xcode"
-      before_script:
-        - echo "OSX before_script"
-        - eval "${MATRIX_EVAL}"
+      before_install:
+        - echo "OSX before_install"
         - pip install --user conan
-        - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
         - conan profile new default --detect
-
+      env:
+        - CMAKE_GENERATOR="Xcode"
+        
 before_script:
-  - echo "Common Before???"
-  - eval "${CMAKE_COMPILER}"
+  - echo "before_script"
+  - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
 
 script:
   - cmake -G"$CMAKE_GENERATOR" .
