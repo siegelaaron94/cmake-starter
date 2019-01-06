@@ -22,7 +22,8 @@ matrix:
             - qt
       env:
         - MATRIX_EVAL="CC=clang && CXX=clang++"
-        - Qt5_DIR=/usr/local/Cellar/qt5/5.11.1
+        - Qt5_DIR=/usr/local/Cellar/qt5/5.11.1/lib/cmake/Qt5
+
 
 before_script:
   - eval "${MATRIX_EVAL}"
