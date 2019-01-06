@@ -18,6 +18,8 @@ matrix:
       env:
         - CMAKE_COMPILER="CC=gcc-8 && CXX=g++-8"
         - CMAKE_GENERATOR="Unix Makefiles"
+      before_script:
+        - pip install conan
     - os: osx
       osx_image: xcode10
       env:
