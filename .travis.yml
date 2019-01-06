@@ -5,7 +5,8 @@ matrix:
   include:
     - os: windows
       env:
-        - MATRIX_EVAL="CC=cc && CXX=cc"
+        - CMAKE_COMPILER=""
+        - CMAKE_GENERATOR="Visual Studio 15 2017 Win64"
     - os: linux
       dist: xenial
       addons:
@@ -15,15 +16,17 @@ matrix:
           packages:
             - g++-8
       env:
-        - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
+        - CMAKE_COMPILER="CC=gcc-8 && CXX=g++-8"
+        - CMAKE_GENERATOR="Unix Makefiles"
     - os: osx
       osx_image: xcode10
       env:
-        - MATRIX_EVAL="CC=clang && CXX=clang++"
+        - CMAKE_COMPILER="CC=clang && CXX=clang++"
+        - CMAKE_GENERATOR="Xcode"
 
 before_script:
-  - eval "${MATRIX_EVAL}"
+  - eval "${CMAKE_COMPILER}"
 
 script:
-  - cmake .
+  - cmake -G${CMAKE_GENERATOR} .
   - cmake --build . --config Debug
