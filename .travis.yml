@@ -3,6 +3,9 @@ sudo: false
 
 matrix:
   include:
+    - os: windows
+      env:
+        - MATRIX_EVAL="CC=cc && CXX=cc"
     - os: linux
       dist: xenial
       addons:
