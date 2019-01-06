@@ -16,11 +16,12 @@ matrix:
       cache:
         timeout: 1000000000
         directories:
-          - /home/travis/.conan
+          - /home/travis/.conan/data
 
 before_script:
   - eval "${MATRIX_EVAL}"
   - pip install --user conan
+  - conan profile new default --detect
   - conan profile update settings.compiler.version=8 default
   - conan profile update settings.compiler.libcxx=libstdc++11 default
   - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
