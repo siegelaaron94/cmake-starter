@@ -13,7 +13,6 @@ addons:
     packages:
       - cmake
       - cmake-data
-    update: true
 
 script:
   - cmake .

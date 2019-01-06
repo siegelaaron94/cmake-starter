@@ -17,4 +17,4 @@ set(SOURCES
     src/main.cpp
 )
 add_executable(cmake-starter WIN32 ${SOURCES})
-#cotire(cmake-starter)
+cotire(cmake-starter)
