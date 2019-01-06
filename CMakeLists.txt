@@ -3,7 +3,7 @@ cmake_policy(SET CMP0074 NEW)
 project(cmake-starter)
 
 include(cmake/cotire.cmake)
-set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR} ${CMAKE_MODULE_PATH})
+include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
