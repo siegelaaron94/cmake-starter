@@ -28,4 +28,4 @@ before_script:
   - mkdir build && cd build && conan install ..
 
 script:
-  - cd build && cmake .. && cmake --build . --config Debug
+  - cmake .. && cmake --build . --config Debug
