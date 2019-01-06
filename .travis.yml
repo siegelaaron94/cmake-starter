@@ -7,6 +7,7 @@ matrix:
         - CMAKE_GENERATOR="Visual Studio 15 2017 Win64"
       before_install:
         - choco install python2
+        - which python2
         - pip install --user conan
         - conan profile new default --detect
     - os: linux
@@ -32,6 +33,7 @@ matrix:
         - CMAKE_GENERATOR="Xcode"
       before_install:
         - pip install --user conan
+        - PATH=$HOME/Library/Python/2.7/bin:$PATH
         - conan profile new default --detect
 
 script:
