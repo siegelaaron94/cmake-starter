@@ -3,14 +3,12 @@ lauguage: cpp
 sudo: false
 
 os:
-  - linux
   - osx
 
 compiler:
-  - gcc
   - clang
 
 
 script:
   - cmake .
-  - cmake --build . -- -j2
+  - cmake --build . --config Debug
