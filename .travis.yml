@@ -8,6 +8,12 @@ os:
 compiler:
   - clang
 
+addons:
+  homebrew:
+    packages:
+      - cmake
+      - cmake-data
+    update: true
 
 script:
   - cmake .
