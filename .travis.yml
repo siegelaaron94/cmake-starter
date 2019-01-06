@@ -28,5 +28,5 @@ before_script:
   - eval "${CMAKE_COMPILER}"
 
 script:
-  - cmake -G$CMAKE_GENERATOR .
+  - cmake -G"$CMAKE_GENERATOR" .
   - cmake --build . --config Debug
