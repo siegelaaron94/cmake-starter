@@ -10,6 +10,10 @@ matrix:
         - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
         - pip install conan
         - conan profile new default --detect
+      cache:
+        timeout: 1000000
+        directories:
+          - /c/Users/travis/.conan/data
     - os: linux
       dist: xenial
       env:
@@ -35,6 +39,10 @@ matrix:
         - pip install --user conan
         - PATH=$HOME/Library/Python/2.7/bin:$PATH
         - conan profile new default --detect
+      cache:
+        timeout: 1000000
+        directories:
+          - /Users/travis/.conan/data
 
 script:
   - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
