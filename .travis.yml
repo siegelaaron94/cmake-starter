@@ -5,10 +5,18 @@ matrix:
     - os: windows
       env:
         - CMAKE_GENERATOR="Visual Studio 15 2017 Win64"
+      before_install:
+        - choco install python2
+        - pip install --user conan
+        - conan profile new default --detect
     - os: linux
       dist: xenial
       env:
         - CMAKE_GENERATOR="Unix Makefiles"
+      cache:
+        timeout: 1000000
+        directories:
+          - /home/travis/.conan/data
       before_install:
         - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
         - sudo apt-get update -q
@@ -25,11 +33,9 @@ matrix:
       before_install:
         - pip install --user conan
         - conan profile new default --detect
-        
-before_script:
-  - echo "before_script"
-  - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
 
 script:
+  - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+  - conan install .
   - cmake -G"$CMAKE_GENERATOR" .
   - cmake --build . --config Debug
