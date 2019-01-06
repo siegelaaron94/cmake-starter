@@ -19,14 +19,27 @@ matrix:
         - CMAKE_COMPILER="CC=gcc-8 && CXX=g++-8"
         - CMAKE_GENERATOR="Unix Makefiles"
       before_script:
-        - pip install conan
+        - echo "Linux before_script"
+        - eval "${MATRIX_EVAL}"
+        - pip install --user conan
+        - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+        - conan profile new default --detect
+        - conan profile update settings.compiler.version=8 default
+        - conan profile update settings.compiler.libcxx=libstdc++11 default
     - os: osx
       osx_image: xcode10
       env:
         - CMAKE_COMPILER="CC=clang && CXX=clang++"
         - CMAKE_GENERATOR="Xcode"
+      before_script:
+        - echo "OSX before_script"
+        - eval "${MATRIX_EVAL}"
+        - pip install --user conan
+        - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+        - conan profile new default --detect
 
 before_script:
+  - echo "Common Before???"
   - eval "${CMAKE_COMPILER}"
 
 script:
